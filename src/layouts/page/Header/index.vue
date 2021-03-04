@@ -8,6 +8,7 @@
           @click="() => setCollapsed(!collapsed)"
         />
         <MenuFoldOutlined v-else class="trigger" @click="() => setCollapsed(!collapsed)" />
+        <PageBreadcrumb />
       </div>
       <div class="page-header-main__right">
         <Dropdown>
@@ -50,6 +51,7 @@
     PoweroffOutlined,
   } from '@ant-design/icons-vue';
   import { Layout, Menu, Avatar, Dropdown } from 'ant-design-vue';
+  import PageBreadcrumb from '../Breadcrumb/index.vue';
 
   interface IProps {
     collapsed: boolean;
@@ -67,6 +69,7 @@
       MenuDivider: Menu.Divider,
       Avatar,
       Dropdown,
+      PageBreadcrumb,
     },
     props: {
       collapsed: {

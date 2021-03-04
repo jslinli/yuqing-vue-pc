@@ -17,8 +17,9 @@ export const RootRoute = {
   redirect: pageEnum.BASE_HOME,
   component: BASE_LAYOUT,
   meta: {
-    title: '',
+    title: '首页',
     single: true,
+    hideBreadcrumb: true,
   },
   children: [
     {

@@ -28,6 +28,7 @@
   import AsideItem from '../AsideItem/index.vue';
   import logo from '@/assets/images/logo.png';
   import { pageEnum } from '@/enums/pageEnum';
+  import { routesToMenu } from '../utils';
 
   interface IProps {
     collapsed: boolean;
@@ -57,21 +58,8 @@
       } = useRouter();
       const currentRoute = useRoute();
 
-      // TODO 将路由转换为菜单 后期优化
-      function routesToMenu(routes: RouteRecordRaw[]) {
-        state.menuRoutes = routes
-          .filter((route) => {
-            return !route.meta?.hideMenu;
-          })
-          .map((route) => {
-            if (route.meta?.single && route.children) {
-              return route.children[0];
-            }
-            return route;
-          });
-      }
       nextTick(() => {
-        routesToMenu(routes);
+        state.menuRoutes = routesToMenu(routes);
       });
 
       const state = reactive<AsideState>({
