@@ -1,15 +1,15 @@
 import type { Router } from 'vue-router';
 
-import nProgress from 'nprogress';
+import NProgress from 'nprogress';
 
 export default (router: Router) => {
   router.beforeEach(() => {
-    nProgress.start();
+    NProgress.start();
     return true;
   });
 
   router.afterEach(() => {
-    nProgress.done();
+    NProgress.done();
     return true;
   });
 };

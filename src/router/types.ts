@@ -20,4 +20,8 @@ export interface RouteMeta {
   ignoreKeepAlive?: boolean;
   // 外部链接
   link?: string;
+  // 是否固定在tab页签上
+  affix?: boolean;
+  // 是否隐藏tab页签
+  hideTab?: boolean;
 }

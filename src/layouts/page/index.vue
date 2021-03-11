@@ -4,13 +4,14 @@
     <Layout class="page-main">
       <PageHeader :collapsed="collapsed" @chang-collapsed="changeCollapsed" />
       <PageContent class="page-content" />
+      <BackTop :target="target" />
     </Layout>
   </Layout>
 </template>
 
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { Layout } from 'ant-design-vue';
+  import { Layout, BackTop } from 'ant-design-vue';
   import PageHeader from './Header/index.vue';
   import PageAside from './Aside/index.vue';
   import PageContent from './Content/index.vue';
@@ -19,6 +20,7 @@
     name: 'PageLayout',
     components: {
       Layout,
+      BackTop,
       PageHeader,
       PageAside,
       PageContent,
@@ -34,6 +36,7 @@
       return {
         collapsed,
         changeCollapsed,
+        target: () => document.querySelector('.page-content'),
       };
     },
   });

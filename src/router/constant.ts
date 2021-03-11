@@ -1,4 +1,4 @@
-import { pageEnum } from '@/enums/pageEnum';
+import { PageEnum } from '@/enums/pageEnum';
 
 export const BASE_LAYOUT = () => import('@/layouts/page/index.vue');
 
@@ -14,12 +14,11 @@ export const LoginRoute = {
 export const RootRoute = {
   path: '/',
   name: 'Root',
-  redirect: pageEnum.BASE_HOME,
+  redirect: PageEnum.BASE_HOME,
   component: BASE_LAYOUT,
   meta: {
     title: '首页',
     single: true,
-    hideBreadcrumb: true,
   },
   children: [
     {

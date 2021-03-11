@@ -4,9 +4,9 @@
       <span v-if="routes.indexOf(route) === routes.length - 1">
         {{ route.meta?.title }}
       </span>
-      <router-link v-else :to="`/${paths.join('/')}`">
+      <RouterLink v-else :to="`/${paths.join('/')}`">
         {{ route.meta?.title }}
-      </router-link>
+      </RouterLink>
     </template>
   </Breadcrumb>
 </template>
@@ -16,10 +16,10 @@
   import { useRoute } from 'vue-router';
   import type { RouteLocationMatched, RouteLocationNormalizedLoaded } from 'vue-router';
   import { Breadcrumb } from 'ant-design-vue';
-  import { pageEnum } from '@/enums/pageEnum';
+  import { PageEnum } from '@/enums/pageEnum';
 
   export default defineComponent({
-    name: 'pageBreadcrumb',
+    name: 'PageBreadcrumb',
     components: {
       Breadcrumb,
     },
@@ -33,7 +33,7 @@
           routes.value = [];
           return;
         }
-        if (currentRoute.path !== pageEnum.BASE_HOME) {
+        if (currentRoute.path !== PageEnum.BASE_HOME) {
           routes.value = [
             ({
               path: '/',

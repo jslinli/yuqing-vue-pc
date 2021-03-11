@@ -1,6 +1,6 @@
 <template>
-  <LayoutHeader class="page-header">
-    <div class="page-header-main">
+  <div class="page-header">
+    <LayoutHeader class="page-header-main">
       <div class="page-header-main__left">
         <MenuUnfoldOutlined
           v-if="collapsed"
@@ -11,47 +11,22 @@
         <PageBreadcrumb />
       </div>
       <div class="page-header-main__right">
-        <Dropdown>
-          <span class="avatar-container">
-            <Avatar
-              class="avatar"
-              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-            />
-            <span>宇擎</span>
-          </span>
-          <template #overlay>
-            <Menu>
-              <MenuItem key="0">
-                <span>
-                  <CopyOutlined />
-                  文档
-                </span>
-              </MenuItem>
-              <MenuDivider />
-              <MenuItem key="1">
-                <span>
-                  <PoweroffOutlined />
-                  退出系统
-                </span>
-              </MenuItem>
-            </Menu>
-          </template>
-        </Dropdown>
+        <FullScreen />
+        <Personal />
       </div>
-    </div>
-  </LayoutHeader>
+    </LayoutHeader>
+    <!-- <MultipleTabs /> -->
+  </div>
 </template>
 
 <script lang="ts">
   import { defineComponent, toRefs } from 'vue';
-  import {
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    CopyOutlined,
-    PoweroffOutlined,
-  } from '@ant-design/icons-vue';
-  import { Layout, Menu, Avatar, Dropdown } from 'ant-design-vue';
+  import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue';
+  import { Layout } from 'ant-design-vue';
   import PageBreadcrumb from '../Breadcrumb/index.vue';
+  import MultipleTabs from '../Tabs/index.vue';
+  import FullScreen from './Fullscreen.vue';
+  import Personal from './Personal.vue';
 
   interface IProps {
     collapsed: boolean;
@@ -61,15 +36,11 @@
     components: {
       MenuUnfoldOutlined,
       MenuFoldOutlined,
-      CopyOutlined,
-      PoweroffOutlined,
       LayoutHeader: Layout.Header,
-      Menu,
-      MenuItem: Menu.Item,
-      MenuDivider: Menu.Divider,
-      Avatar,
-      Dropdown,
       PageBreadcrumb,
+      MultipleTabs,
+      FullScreen,
+      Personal,
     },
     props: {
       collapsed: {
@@ -93,16 +64,17 @@
 <style lang="scss" scoped>
   .page-header {
     z-index: 99;
-    height: 50px;
     min-width: 1000px;
-    padding: 0;
-    line-height: 50px;
-    background-color: #fff;
     box-shadow: 0 1px 2px 0 rgb(29 35 41 / 5%);
 
     .page-header-main {
       display: flex;
       justify-content: space-between;
+      height: 50px;
+      padding: 0;
+      line-height: 50px;
+      background-color: #fff;
+      border-bottom: 1px solid #eee;
 
       .page-header-main__left {
         display: flex;
@@ -123,13 +95,14 @@
       }
 
       .page-header-main__right {
-        .avatar-container {
-          display: flex;
-          align-items: center;
-          padding: 0 20px;
+        display: flex;
 
-          .avatar {
-            margin-right: 8px;
+        span {
+          padding: 0 10px;
+
+          &:hover {
+            cursor: pointer;
+            background-color: #f6f6f6;
           }
         }
       }

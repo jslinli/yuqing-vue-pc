@@ -27,7 +27,7 @@
   import type { RouteRecordRaw } from 'vue-router';
   import AsideItem from '../AsideItem/index.vue';
   import logo from '@/assets/images/logo.png';
-  import { pageEnum } from '@/enums/pageEnum';
+  import { PageEnum } from '@/enums/pageEnum';
   import { routesToMenu } from '../utils';
 
   interface IProps {
@@ -58,14 +58,14 @@
       } = useRouter();
       const currentRoute = useRoute();
 
-      nextTick(() => {
-        state.menuRoutes = routesToMenu(routes);
-      });
-
       const state = reactive<AsideState>({
         selectedKeys: [currentRoute.name] as string[], // 当前选中的菜单项
         openKeys: getOpenKeys(), // 当前展开的 SubMenu 菜单项
         menuRoutes: [], // 菜单数据
+      });
+
+      nextTick(() => {
+        state.menuRoutes = routesToMenu(routes);
       });
 
       function getOpenKeys() {
@@ -74,7 +74,7 @@
 
       // 跟随页面路由变化，切换菜单选中状态
       watch([() => currentRoute.fullPath, () => props.collapsed], () => {
-        if (currentRoute.path == pageEnum.BASE_LOGIN) return;
+        if (currentRoute.path === PageEnum.BASE_LOGIN) return;
         if (props.collapsed) {
           state.openKeys = [];
           return;
@@ -128,6 +128,7 @@
       height: calc(100% - 50px);
       overflow-x: hidden;
       overflow-y: auto;
+      overflow-y: overlay;
     }
   }
 </style>

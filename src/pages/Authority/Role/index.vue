@@ -1,3 +1,3 @@
 <template>
-  <div>Role</div>
+  <div>Role <input /></div>
 </template>
